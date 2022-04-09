@@ -1418,10 +1418,10 @@ json-stringify-safe@~5.0.1:
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
   integrity sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=
 
-jsontoxml@0.0.11:
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/jsontoxml/-/jsontoxml-0.0.11.tgz#373ab5b2070be3737a5fb3e32fd1b7b81870caa4"
-  integrity sha1-Nzq1sgcL43N6X7PjL9G3uBhwyqQ=
+jsontoxml@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/jsontoxml/-/jsontoxml-0.1.1.tgz#59c4a688f969125ec8e6d77544a15367864ad8a9"
+  integrity sha512-oUTMEA8LqO8lBslgVcmhTpHhq2qvsbjjcCGQ0CS8GnrMuSe8B/38NNg3Zbde+0aVDryZ5drwClihwTW+SzVDbQ==
 
 jsprim@^1.2.2:
   version "1.4.1"

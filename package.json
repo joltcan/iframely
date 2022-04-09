@@ -34,7 +34,7 @@
         "iconv-lite": "0.6.3",
         "iltorb": "^2.4.3",
         "jslint": "^0.12.1",
-        "jsontoxml": "0.0.11",
+        "jsontoxml": "0.1.1",
         "memcached": "2.2.2",
         "moment": "2.29.2",
         "node-cache": "1.*",
