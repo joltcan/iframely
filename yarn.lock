@@ -2,14 +2,14 @@
 # yarn lockfile v1
 
 
-"@adobe/helix-fetch@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@adobe/helix-fetch/-/helix-fetch-3.0.0.tgz#89c9c01ca3894375d6ca6cefa2ce974bcbc37f46"
-  integrity sha512-yvkOBwXLYchH/ql/KZ0Rp7QLuw0J38q0ZgOiPeF4ZPrBFfyJD6HmAX5AjvHEaofOyPKIJmlZb5KD+6kjE+01kg==
+"@adobe/helix-fetch@^3.0.6":
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/@adobe/helix-fetch/-/helix-fetch-3.0.8.tgz#5ccb2c07ce021d7a09e703948847c588a5ad2924"
+  integrity sha512-nljp2HZSSfs+MJl0nO6+KwzqL2NBTCrXoye3465NKNoiXEBOiG6UvHR7VKKIBV0gCY8OZKUkwo3KlaXvDVwq1g==
   dependencies:
-    debug "4.3.2"
+    debug "4.3.4"
     http-cache-semantics "4.1.0"
-    lru-cache "6.0.0"
+    lru-cache "7.7.3"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -559,17 +559,17 @@ debug@3.1.0:
   dependencies:
     ms "2.0.0"
 
-debug@4.3.2:
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
-  integrity sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==
-  dependencies:
-    ms "2.1.2"
-
 debug@4.3.3:
   version "4.3.3"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.3.tgz#04266e0b70a98d4462e6e288e38259213332b664"
   integrity sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q==
+  dependencies:
+    ms "2.1.2"
+
+debug@4.3.4:
+  version "4.3.4"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.4.tgz#1319f6579357f2338d3337d2cdd4914bb5dcc865"
+  integrity sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==
   dependencies:
     ms "2.1.2"
 
@@ -1540,12 +1540,10 @@ loupe@^2.3.1:
   dependencies:
     get-func-name "^2.0.0"
 
-lru-cache@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-6.0.0.tgz#6d6fe6570ebd96aaf90fcad1dafa3b2566db3a94"
-  integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
-  dependencies:
-    yallist "^4.0.0"
+lru-cache@7.7.3:
+  version "7.7.3"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-7.7.3.tgz#98cd19eef89ce6a4a3c4502c17c833888677c252"
+  integrity sha512-WY9wjJNQt9+PZilnLbuFKM+SwDull9+6IAguOrarOMoOHTcJ9GnXSO11+Gw6c7xtDkBkthR57OZMtZKYr+1CEw==
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -2709,11 +2707,6 @@ y18n@^5.0.5:
   version "5.0.8"
   resolved "https://registry.yarnpkg.com/y18n/-/y18n-5.0.8.tgz#7f4934d0f7ca8c56f95314939ddcd2dd91ce1d55"
   integrity sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==
-
-yallist@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
-  integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 
 yargs-parser@20.2.4:
   version "20.2.4"
