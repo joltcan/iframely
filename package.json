@@ -46,7 +46,7 @@
         "request": "^2.88.0",
         "sax": "1.2.2",
         "semver": "^6.3.0",
-        "send": "0.16.1",
+        "send": "0.18.0",
         "underscore": "^1.13.1"
     },
     "devDependencies": {
