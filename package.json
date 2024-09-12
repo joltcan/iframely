@@ -46,7 +46,7 @@
         "redis-clustr": "1.7.0",
         "request": "^2.88.2",
         "sax": "^1.2.4",
-        "send": "^0.18.0",
+        "send": "^0.19.0",
         "underscore": "^1.13.6"
     },
     "devDependencies": {
