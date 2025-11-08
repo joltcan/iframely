@@ -2,13 +2,13 @@
 # yarn lockfile v1
 
 
-"@adobe/fetch@^4.0.6":
-  version "4.1.9"
-  resolved "https://registry.yarnpkg.com/@adobe/fetch/-/fetch-4.1.9.tgz#20dec266a38d17b3a5874c657fb17610fab73905"
-  integrity sha512-FWIzm4vvl1OtCarTBgWDW6otj4gxrNmMf/DdriqBUw7DjjmckjT3ZQA43b4HzBkzkuAHhajwMy91btp9fWgTEw==
+"@adobe/fetch@^4.1.11":
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/@adobe/fetch/-/fetch-4.2.2.tgz#435a1b0486530a94df321fdc743902313b7270bc"
+  integrity sha512-k0weFWqQ/UBliyykhnz2Rga7N3ObMuEAg/UocBKuKB7w8Lc43UiTadW8PNWv/jo6JSrZD3wh0kKnGA0dbcFErA==
   dependencies:
-    debug "4.3.7"
-    http-cache-semantics "4.1.1"
+    debug "4.4.1"
+    http-cache-semantics "4.2.0"
     lru-cache "7.18.3"
 
 "@mongodb-js/saslprep@^1.1.5":
@@ -496,7 +496,14 @@ debug@2, debug@2.6.9:
   dependencies:
     ms "2.0.0"
 
-debug@4.3.7, debug@4.x, debug@^4.3.5:
+debug@4.4.1:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.4.1.tgz#e5a8bc6cbc4c6cd3e64308b0693a3d4fa550189b"
+  integrity sha512-KcKCqiftBJcZr++7ykoDIEwSa3XWowTfNPo92BYxjXiyYEVrUQh2aLyhxBCwww+heortUFxEJYcRzosstTEBYQ==
+  dependencies:
+    ms "^2.1.3"
+
+debug@4.x, debug@^4.3.5:
   version "4.3.7"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.7.tgz#87945b4151a011d76d95a198d7111c865c360a52"
   integrity sha512-Er2nc/H7RrMXZBFCEim6TCmMk02Z8vLC2Rbi1KEBggpo0fS6l0S1nnapwmIi3yW/+GOJap1Krg4w0Hg80oCqgQ==
@@ -1147,7 +1154,12 @@ htmlparser2@^7.2.0:
     domutils "^2.8.0"
     entities "^3.0.1"
 
-http-cache-semantics@4.1.1, http-cache-semantics@^4.1.1:
+http-cache-semantics@4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/http-cache-semantics/-/http-cache-semantics-4.2.0.tgz#205f4db64f8562b76a4ff9235aa5279839a09dd5"
+  integrity sha512-dTxcvPXqPvXBQpq5dUr6mEMJX4oIEFv6bwom3FDwKRDsuIjjJGANqhBuoAn9c1RQJIdAKav33ED65E2ys+87QQ==
+
+http-cache-semantics@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/http-cache-semantics/-/http-cache-semantics-4.1.1.tgz#abe02fcb2985460bf0323be664436ec3476a6d5a"
   integrity sha512-er295DKPVsV82j5kw1Gjt+ADA/XYHsajl82cGNQG2eyoPkvgUhX+nDIyelzhIWbbsXP39EHcI6l5tYs2FYqYXQ==
@@ -2035,6 +2047,11 @@ sax@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
+
+sax@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/sax/-/sax-1.4.1.tgz#44cc8988377f126304d3b3fc1010c733b929ef0f"
+  integrity sha512-+aWOz7yVScEGoKNd4PA10LZ8sk0A/z5+nXQG5giUO5rprX9jgYsTdov9qCchZiPIZezbZH+jRut8nPodFAX4Jg==
 
 semver@^7.3.8:
   version "7.6.3"
