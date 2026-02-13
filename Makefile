@@ -6,7 +6,7 @@ EXPOSEPORT	:= 8061
 PUBLISHPORT := ${EXPOSEPORT}
 
 build:
-	git checkout main 
+	git checkout main
 	git branch -f tag-${VERSION}
 	git checkout tag-${VERSION}
 	docker \
