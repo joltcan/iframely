@@ -18,3 +18,4 @@ iframely-private-plugins/
 config.providers.js
 .vscode/launch.json
 .npmrc
+.claude/
