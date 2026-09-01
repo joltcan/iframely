@@ -63,12 +63,14 @@ history:
 	docker \
 		history ${CONTAINER}
 
-clean:
-	-docker \
-		rm ${CONTAINER}
+clean: stop
 	-docker \
 		rmi ${CONTAINER}
+ifdef VERSION
 	git branch -d tag-${VERSION}
+else
+	-git branch --format='%(refname:short)' --list 'tag-*' | xargs -r git branch -d
+endif
 
 push:
 	docker tag ${CONTAINER} ${IMAGE_NAME}:${VERSION}
