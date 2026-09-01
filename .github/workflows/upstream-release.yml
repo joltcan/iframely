@@ -1,0 +1,84 @@
+name: Build new upstream release
+
+on:
+  schedule:
+    - cron: '23 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: upstream-release
+
+jobs:
+  check-and-build:
+    runs-on: ubuntu-latest
+    env:
+      IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/iframely
+    steps:
+      - name: Checkout fork
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch upstream tags
+        run: |
+          git remote add upstream https://github.com/itteco/iframely.git
+          git fetch upstream --tags --quiet
+
+      - name: Detect new release tag
+        id: detect
+        run: |
+          VERSION=$(git tag --sort=-v:refname | head -n 1)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          if git ls-remote --exit-code --tags origin "refs/tags/$VERSION" >/dev/null; then
+            echo "already up to date ($VERSION)"
+            echo "new=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "new version detected: $VERSION"
+            echo "new=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check out release
+        if: steps.detect.outputs.new == 'true'
+        run: git checkout "${{ steps.detect.outputs.version }}"
+
+      - name: Log in to Docker Hub
+        if: steps.detect.outputs.new == 'true'
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build image
+        if: steps.detect.outputs.new == 'true'
+        run: docker build --pull -t "$IMAGE:${{ steps.detect.outputs.version }}" -t "$IMAGE:latest" .
+
+      - name: Smoke test
+        if: steps.detect.outputs.new == 'true'
+        run: |
+          docker run -d --name iframely -p 8061:8061 -e NODE_TLS_REJECT_UNAUTHORIZED=0 "$IMAGE:${{ steps.detect.outputs.version }}"
+          code=000
+          for i in $(seq 1 30); do
+            code=$(curl -s -o /dev/null -w '%{http_code}' 'http://localhost:8061/iframely?uri=https%3A%2F%2Fmekk.com' || true)
+            [ "$code" != "000" ] && break
+            sleep 2
+          done
+          echo "HTTP status: $code"
+          docker logs iframely
+          docker rm -f iframely
+          if [ "$code" = "000" ] || [ "$code" -ge 500 ]; then
+            echo "smoke test failed"
+            exit 1
+          fi
+
+      - name: Push image to Docker Hub
+        if: steps.detect.outputs.new == 'true'
+        run: |
+          docker push "$IMAGE:${{ steps.detect.outputs.version }}"
+          docker push "$IMAGE:latest"
+
+      - name: Push tag to fork
+        if: steps.detect.outputs.new == 'true'
+        run: git push origin "refs/tags/${{ steps.detect.outputs.version }}"
