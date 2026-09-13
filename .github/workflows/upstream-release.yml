@@ -27,6 +27,29 @@ jobs:
             exit 1
           fi
 
+      - name: Check fork push token
+        env:
+          FORK_PUSH_TOKEN: ${{ secrets.FORK_PUSH_TOKEN }}
+        run: |
+          if [ -z "$FORK_PUSH_TOKEN" ]; then
+            echo "::warning::FORK_PUSH_TOKEN secret is not set. Tag push to the fork will fail for upstream releases that modify .github/workflows/."
+            exit 0
+          fi
+          headers=$(mktemp)
+          status=$(curl -s -o /dev/null -D "$headers" -w '%{http_code}' -H "Authorization: Bearer $FORK_PUSH_TOKEN" "https://api.github.com/repos/${{ github.repository }}")
+          if [ "$status" != "200" ]; then
+            echo "::error::FORK_PUSH_TOKEN was rejected by GitHub (HTTP $status). It has probably expired or been revoked. Create a new fine-grained PAT (Contents + Workflows: write) and update the secret."
+            exit 1
+          fi
+          expires=$(grep -i '^github-authentication-token-expiration:' "$headers" | cut -d' ' -f2- | tr -d '\r')
+          if [ -n "$expires" ]; then
+            days=$(( ( $(date -d "$expires" +%s) - $(date +%s) ) / 86400 ))
+            echo "FORK_PUSH_TOKEN expires $expires ($days days)"
+            if [ "$days" -lt 14 ]; then
+              echo "::warning::FORK_PUSH_TOKEN expires in $days days ($expires). Rotate it soon."
+            fi
+          fi
+
       - name: Checkout fork
         uses: actions/checkout@v7
         with:
