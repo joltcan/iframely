@@ -17,10 +17,24 @@ jobs:
     env:
       IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/iframely
     steps:
+      - name: Check required secrets
+        env:
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+        run: |
+          if [ -z "$DOCKERHUB_USERNAME" ] || [ -z "$DOCKERHUB_TOKEN" ]; then
+            echo "::error::DOCKERHUB_USERNAME and DOCKERHUB_TOKEN repo secrets must be set"
+            exit 1
+          fi
+
       - name: Checkout fork
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
+          # The default github.token cannot push tags whose commits touch
+          # .github/workflows/. Set FORK_PUSH_TOKEN to a fine-grained PAT with
+          # Contents: write and Workflows: write on this repo to allow that.
+          token: ${{ secrets.FORK_PUSH_TOKEN || github.token }}
 
       - name: Fetch upstream tags
         run: |
