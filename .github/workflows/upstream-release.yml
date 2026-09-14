@@ -48,6 +48,8 @@ jobs:
             if [ "$days" -lt 14 ]; then
               echo "::warning::FORK_PUSH_TOKEN expires in $days days ($expires). Rotate it soon."
             fi
+          else
+            echo "FORK_PUSH_TOKEN is valid and has no expiration"
           fi
 
       - name: Checkout fork
